@@ -5,6 +5,7 @@ import 'bmi_page.dart';
 import 'calorie_page.dart';
 import 'login_page.dart';
 import 'workout_page.dart';
+import 'group_page.dart';
 
 class _HomeMenuItem {
   final IconData icon;
@@ -67,9 +68,10 @@ class HomePage extends StatelessWidget {
         label: 'Workout Schedule',
         pageBuilder: (_) => const WorkoutPage(),
       ),
-      const _HomeMenuItem(
+      _HomeMenuItem(
         icon: Icons.groups_outlined,
         label: 'Data Kelompok',
+        pageBuilder: (_) => const GroupDataPage(),
       ),
     ];
 
