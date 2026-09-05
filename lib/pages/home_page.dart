@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../utils/constants.dart';
 import '../widgets/menu_card.dart';
+import 'bmi_page.dart';
 import 'login_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,6 +9,13 @@ class HomePage extends StatelessWidget {
 
   void _openPage(BuildContext context, String label) {
     // TODO: ganti dengan Navigator.push ke halaman asli setiap fitur
+    // sudah dibuat (calculator_page.dart, calorie_page.dart, dst).
+    if (label == 'BMI Calculator') {
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => const BmiPage()),
+      );
+      return;
+    }
     // sudah dibuat (bmi_page.dart, calculator_page.dart, dst).
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('$label belum tersedia.')),
