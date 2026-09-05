@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'pages/workout_page.dart';
 import 'pages/calorie_page.dart'; 
 import 'pages/login_page.dart';
 import 'utils/constants.dart';
