@@ -29,7 +29,7 @@ class MenuCard extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 26,
-                backgroundColor: AppColors.primary.withValues(alpha: 0.1),
+                backgroundColor: AppColors.primary.withOpacity(0.1),
                 child: Icon(icon, color: AppColors.primary, size: 26),
               ),
               const SizedBox(height: 10),
