@@ -16,6 +16,7 @@ class HomePage extends StatelessWidget {
       );
       return;
     }
+    // sudah dibuat (bmi_page.dart, calculator_page.dart, dst).
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('$label belum tersedia.')),
     );
