@@ -2,21 +2,37 @@ import 'package:flutter/material.dart';
 import '../utils/constants.dart';
 import '../widgets/menu_card.dart';
 import 'bmi_page.dart';
+import 'calorie_page.dart';
 import 'login_page.dart';
+import 'workout_page.dart';
+
+class _HomeMenuItem {
+  final IconData icon;
+  final String label;
+  final WidgetBuilder? pageBuilder;
+
+  const _HomeMenuItem({
+    required this.icon,
+    required this.label,
+    this.pageBuilder,
+  });
+}
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  void _openPage(BuildContext context, String label) {
-    // TODO: ganti dengan Navigator.push ke halaman asli setiap fitur
-    // sudah dibuat (calculator_page.dart, calorie_page.dart, dst).
-    if (label == 'BMI Calculator') {
+  void _openPage(
+    BuildContext context, {
+    required String label,
+    required WidgetBuilder? pageBuilder,
+  }) {
+    if (pageBuilder != null) {
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const BmiPage()),
+        MaterialPageRoute(builder: pageBuilder),
       );
       return;
     }
-    // sudah dibuat (bmi_page.dart, calculator_page.dart, dst).
+
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('$label belum tersedia.')),
     );
@@ -31,12 +47,30 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final menuItems = [
-      (icon: Icons.monitor_weight_outlined, label: 'BMI Calculator'),
-      (icon: Icons.calculate_outlined, label: 'Kalkulator'),
-      (icon: Icons.restaurant_outlined, label: 'Daily Calories'),
-      (icon: Icons.fitness_center_outlined, label: 'Workout Schedule'),
-      (icon: Icons.groups_outlined, label: 'Data Kelompok'),
+    final menuItems = <_HomeMenuItem>[
+      _HomeMenuItem(
+        icon: Icons.monitor_weight_outlined,
+        label: 'BMI Calculator',
+        pageBuilder: (_) => const BmiPage(),
+      ),
+      const _HomeMenuItem(
+        icon: Icons.calculate_outlined,
+        label: 'Kalkulator',
+      ),
+      _HomeMenuItem(
+        icon: Icons.restaurant_outlined,
+        label: 'Daily Calories',
+        pageBuilder: (_) => const CaloriePage(),
+      ),
+      _HomeMenuItem(
+        icon: Icons.fitness_center_outlined,
+        label: 'Workout Schedule',
+        pageBuilder: (_) => const WorkoutPage(),
+      ),
+      const _HomeMenuItem(
+        icon: Icons.groups_outlined,
+        label: 'Data Kelompok',
+      ),
     ];
 
     return Scaffold(
@@ -83,7 +117,11 @@ class HomePage extends StatelessWidget {
                     return MenuCard(
                       icon: item.icon,
                       label: item.label,
-                      onTap: () => _openPage(context, item.label),
+                      onTap: () => _openPage(
+                        context,
+                        label: item.label,
+                        pageBuilder: item.pageBuilder,
+                      ),
                     );
                   },
                 ),
