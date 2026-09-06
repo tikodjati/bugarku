@@ -17,15 +17,15 @@ class GroupDataPage extends StatelessWidget {
 
   static const List<_GroupMember> _members = [
     _GroupMember(
-      name: 'Nama Lengkap - NIM',
+      name: 'Kartiko Damar Jati - 124240100',
       icon: Icons.person_outline,
     ),
     _GroupMember(
-      name: 'Nama Lengkap - NIM',
+      name: 'Hera Yola Ardini - 124240111',
       icon: Icons.palette_outlined,
     ),
     _GroupMember(
-      name: 'Nama Lengkap - NIM',
+      name: 'Rosa Viany Herdante Putri - 124240128',
       icon: Icons.code_outlined,
     ),
   ];
