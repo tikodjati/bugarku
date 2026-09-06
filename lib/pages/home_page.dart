@@ -3,6 +3,7 @@ import '../utils/constants.dart';
 import '../widgets/menu_card.dart';
 import 'bmi_page.dart';
 import 'calorie_page.dart';
+import 'calculator_page.dart';
 import 'login_page.dart';
 import 'workout_page.dart';
 import 'group_page.dart';
@@ -54,9 +55,10 @@ class HomePage extends StatelessWidget {
         label: 'BMI Calculator',
         pageBuilder: (_) => const BmiPage(),
       ),
-      const _HomeMenuItem(
+      _HomeMenuItem(
         icon: Icons.calculate_outlined,
         label: 'Kalkulator',
+        pageBuilder: (_) => const CalculatorPage(),
       ),
       _HomeMenuItem(
         icon: Icons.restaurant_outlined,
